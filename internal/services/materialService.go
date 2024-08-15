@@ -59,3 +59,32 @@ func (s *MaterialService) GetMaterialByUUID(uuid string) (*models.Material, erro
 
 	return mayerial, nil
 }
+
+func (s *MaterialService) UpdateMaterial(uuid string, request models.UpdateRequest) (material *models.Material, err error) {
+	material, err = s.repo.GetMaterialByUUID(uuid)
+
+	if err != nil {
+		return nil, err
+	}
+
+	material.Status = request.Status
+	material.Title = request.Title
+	material.Content = request.Content
+	material.UpdatedAt = time.Now()
+
+	if err := s.repo.UpdateMaterial(*material); err != nil {
+		return nil, err
+	}
+
+	return material, nil
+}
+
+func (s *MaterialService) GetAllMaterials(active bool, materialType, startDate, endDate string) (materials []*models.Material, err error) {
+	materials, err = s.repo.GetAllMaterials(active, materialType, startDate, endDate)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return materials, nil
+}

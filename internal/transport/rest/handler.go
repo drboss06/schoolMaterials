@@ -20,6 +20,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	router.POST("/materials", h.CreateMaterial)
 	router.GET("/materials/:uuid", h.GetMaterialByUUID)
+	router.PUT("/materials/:uuid", h.UpdateMaterial)
+	router.GET("/materials", h.GetAllMaterials)
 
 	return router
 

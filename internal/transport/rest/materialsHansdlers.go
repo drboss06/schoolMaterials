@@ -36,3 +36,39 @@ func (h *Handler) GetMaterialByUUID(c *gin.Context) {
 
 	c.JSON(http.StatusOK, material)
 }
+
+func (h *Handler) UpdateMaterial(c *gin.Context) {
+	uuid := c.Param("uuid")
+
+	updateRequest := &models.UpdateRequest{}
+
+	if err := c.ShouldBindJSON(&updateRequest); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	material, err := h.service.UpdateMaterial(uuid, *updateRequest)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, material)
+
+}
+
+func (h *Handler) GetAllMaterials(c *gin.Context) {
+	active := c.Query("active") == "true"
+	materialType := c.Query("type")
+	startDate := c.Query("start_date")
+	endDate := c.Query("end_date")
+
+	materials, err := h.service.GetAllMaterials(active, materialType, startDate, endDate)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, materials)
+}
