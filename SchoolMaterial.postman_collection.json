@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "3c75ee41-b198-4c6e-8bba-e735c0a0f5c2",
+		"name": "SchoolMaterial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15337245"
+	},
+	"item": [
+		{
+			"name": "CreateMaterial",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"статья\",\r\n    \"status\": \"архивный\",\r\n\t\"title\": \"test\",\r\n\t\"content\": \"cont_test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/materials",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"materials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByUUID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateMaterial",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMaterials",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMaterials_pag",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
