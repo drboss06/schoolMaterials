@@ -6,10 +6,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const (
-	materialTable = "materials"
-)
-
 type Config struct {
 	Host     string
 	Port     string
