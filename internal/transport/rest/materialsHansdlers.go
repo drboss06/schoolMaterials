@@ -7,6 +7,12 @@ import (
 	"schoolMaterial/pkg/logger"
 )
 
+// CreateMaterial handles the creation of a new material via a POST request.
+//
+// Parameters:
+// - c: The gin.Context object representing the HTTP request and response.
+//
+// Returns: None.
 func (h *Handler) CreateMaterial(c *gin.Context) {
 	logger.GetLogger().Info("Create Material")
 	var material models.Material
@@ -30,6 +36,12 @@ func (h *Handler) CreateMaterial(c *gin.Context) {
 
 }
 
+// GetMaterialByUUID handles the retrieval of a material by its UUID.
+//
+// Parameters:
+// - c: The gin.Context object representing the HTTP request and response.
+//
+// Returns: None.
 func (h *Handler) GetMaterialByUUID(c *gin.Context) {
 	logger.GetLogger().Info("Get Material By UUID")
 
@@ -46,6 +58,12 @@ func (h *Handler) GetMaterialByUUID(c *gin.Context) {
 	c.JSON(http.StatusOK, material)
 }
 
+// UpdateMaterial handles the update of a material via a PUT request.
+//
+// Parameters:
+// - c: The gin.Context object representing the HTTP request and response.
+//
+// Returns: None.
 func (h *Handler) UpdateMaterial(c *gin.Context) {
 	logger.GetLogger().Info("Update Material")
 
@@ -73,6 +91,12 @@ func (h *Handler) UpdateMaterial(c *gin.Context) {
 
 }
 
+// GetAllMaterials handles the retrieval of all materials via a GET request.
+//
+// Parameters:
+// - c: The gin.Context object representing the HTTP request and response.
+//
+// Returns: None.
 func (h *Handler) GetAllMaterials(c *gin.Context) {
 	logger.GetLogger().Info("Get All Materials")
 	active := c.Query("active") == "true"

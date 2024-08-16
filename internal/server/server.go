@@ -10,6 +10,14 @@ type Server struct {
 	httpServer *http.Server
 }
 
+// Run starts the HTTP server on the specified port with the given handler.
+//
+// Parameters:
+// - port: the port number to listen on (e.g. "8080")
+// - handler: the HTTP handler to handle incoming requests
+//
+// Returns:
+// - error: an error if the server fails to start
 func (s *Server) Run(port string, handler http.Handler) error {
 	s.httpServer = &http.Server{
 		Addr:           ":" + port,

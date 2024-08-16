@@ -8,6 +8,14 @@ import (
 
 var log *logrus.Logger
 
+// InitLogger initializes the logger with the specified log file path and log level.
+//
+// Parameters:
+// - logFilePath: the path to the log file.
+// - logLevel: the log level (debug, info, error).
+//
+// Returns:
+// - error: an error if there was a problem opening the log file.
 func InitLogger(logFilePath string, logLevel string) error {
 	log = logrus.New()
 
